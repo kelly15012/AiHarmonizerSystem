@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Harmonizer</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body class="light">
+    <header>
+        <h1>Welcome to Ai Harmonizer</h1>
+    </header>
+    <main>
+        <section id="registration-section">
+            <h2>Register</h2>
+            <form id="registration-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname"><br>
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender"><br>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob"><br>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section id="login-section">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required><br>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
