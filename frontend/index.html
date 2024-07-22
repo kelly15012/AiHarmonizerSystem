@@ -4,46 +4,44 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ai Harmonizer</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+
+    <!-- Main css -->
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'theme.css' %}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/34c7da4198.js" crossorigin="anonymous"></script>
 </head>
 <body class="light">
-    <header>
-        <h1>Welcome to Ai Harmonizer</h1>
-    </header>
-    <main>
-        <section id="registration-section">
-            <h2>Register</h2>
-            <form id="registration-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br>
-                <label for="fname">First Name:</label>
-                <input type="text" id="fname" name="fname"><br>
-                <label for="lname">Last Name:</label>
-                <input type="text" id="lname" name="lname"><br>
-                <label for="gender">Gender:</label>
-                <input type="text" id="gender" name="gender"><br>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob"><br>
-                <button type="submit">Register</button>
-            </form>
-        </section>
-
-        <section id="login-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <label for="login-email">Email:</label>
-                <input type="email" id="login-email" name="email" required><br>
-                <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="password" required><br>
-                <button type="submit">Login</button>
-            </form>
+    <div class="main">
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <iframe class="responsive-iframe" src="https://my.spline.design/untitled-75ef12d98642fc62abe9d52316f9da28/"></iframe>
+                    </div>    
+                    <div class="signin-form">
+                        <h2 class="form-title">Login</h2>
+                        <form action="/login/" method="POST">{% csrf_token %}
+                            <div class="form-group">
+                                <label for="email"><i class="fa-solid fa-user"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="fa-solid fa-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password" autocomplete="off" autofocus required/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
 </body>
 </html>
