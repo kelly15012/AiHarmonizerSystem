@@ -1,17 +1,21 @@
 # backend/authentication/views.py
 
-from rest_framework import generics
-from .models import User, Admin, Login
-from .serializers import UserSerializer, AdminSerializer, LoginSerializer
+from django.shortcuts import render
 
-class UserCreate(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+def home(request):
+    return render(request, 'home.html')
 
-class AdminCreate(generics.CreateAPIView):
-    queryset = Admin.objects.all()
-    serializer_class = AdminSerializer
+def subscription(request):
+    return render(request, 'subscription.html')
 
-class LoginCreate(generics.CreateAPIView):
-    queryset = Login.objects.all()
-    serializer_class = LoginSerializer
+def project(request):
+    return render(request, 'project.html')
+
+def community(request):
+    return render(request, 'community.html')
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def login(request):
+    return render(request, 'login.html')

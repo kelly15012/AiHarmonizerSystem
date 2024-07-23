@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Harmonizer{% endblock %}</title>
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'theme.css' %}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/34c7da4198.js" crossorigin="anonymous"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'secondaryLogo.svg' %}">
+</head>
+<body class="light">
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="{% url 'home' %}"><img src="{% static 'primaryLogo.svg' %}" alt="Logo" class="nav-logo"></a>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'subscription' %}">Subscription</a></li>
+                    <li><a href="{% url 'project' %}">Project</a></li>
+                    <li><a href="{% url 'community' %}">Community</a></li>
+                </ul>
+            </div>
+            <ul class="nav-right">
+                <li><a href="{% url 'login' %}" class="nav-login-button">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

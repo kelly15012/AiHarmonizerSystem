@@ -1,10 +1,13 @@
 # backend/authentication/urls.py
 
 from django.urls import path
-from .views import UserCreate, AdminCreate, LoginCreate
+from . import views
 
 urlpatterns = [
-    path('register/user/', UserCreate.as_view(), name='register_user'),
-    path('register/admin/', AdminCreate.as_view(), name='register_admin'),
-    path('login/', LoginCreate.as_view(), name='login'),
+    path('', views.home, name='home'),
+    path('subscription/', views.subscription, name='subscription'),
+    path('project/', views.project, name='project'),
+    path('community/', views.community, name='community'),
+    path('profile/', views.profile, name='profile'),
+    path('login/', views.login, name='login'),
 ]

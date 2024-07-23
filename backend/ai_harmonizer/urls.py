@@ -17,10 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from django.conf import settings
+from django.conf.urls.static import static
+from ai_harmonizer import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/', include('authentication.urls')),
-    path('', home, name='home'),  # Add this line for the home view
+    path('', views.home, name='home'),
+    path('auth/', include('authentication.urls')),  # Include your authentication app urls
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

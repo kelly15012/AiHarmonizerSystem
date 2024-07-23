@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <iframe class="responsive-iframe" src="https://my.spline.design/untitled-75ef12d98642fc62abe9d52316f9da28/"></iframe>
+                </div>    
+                <div class="signin-form">
+                    <h2 class="form-title">Login</h2>
+                    <form action="/login/" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="password" id="pass" placeholder="Password" autocomplete="off" autofocus required/>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
