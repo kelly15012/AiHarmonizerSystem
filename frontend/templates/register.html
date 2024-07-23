@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'registration.css' %}">
+
+    <section class="sign-up">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-image">
+                    <iframe class="responsive-iframe" src="https://my.spline.design/girldancecopy-3b9faf3c8131d617b23dd5d9d14ac201/"></iframe>
+                </div>    
+                <div class="signup-form">
+                    <h2 class="form-title">Register</h2>
+                    <form action="/register/" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="username"><i class="fa-solid fa-user"></i></label>
+                            <input type="text" name="username" id="username" placeholder="Username"/>
+                        </div>
+                        <div class="name-form-group">
+                            <div class="form-group">
+                                <input type="text" name="fname" id="fname" placeholder="First Name"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lname" id="lname" placeholder="Last Name"/>
+                            </div>
+                        </div>
+                        <div class="form-group dropdown">
+                            <label for="gender"><i class="fa-solid fa-venus-mars"></i></label>
+                            <select name="gender" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob"><i class="fa-solid fa-calendar-alt"></i></label>
+                            <input type="date" name="dob" id="dob" placeholder="Date of Birth"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="conpassword"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="conpassword" id="conpassword" placeholder="Confirm Password" autocomplete="off" required/>
+                        </div>
+                        <div class="login-link">
+                            <p>Have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
