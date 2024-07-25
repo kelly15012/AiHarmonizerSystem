@@ -31,7 +31,13 @@
                 </ul>
             </div>
             <ul class="nav-right">
-                <li><a href="{% url 'login' %}" class="nav-login-button">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="#" class="nav-link">Hello, {{ user.first_name }}</a></li>
+                    <li><a href="{% url 'signout' %}" class="nav-login-button">SignOut</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}" class="nav-login-button">SignUp</a></li>
+                    <li><a href="{% url 'signin' %}" class="nav-login-button">SignIn</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

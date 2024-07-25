@@ -1,6 +1,5 @@
-# backend/authentication/urls.py
-
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -9,6 +8,7 @@ urlpatterns = [
     path('project/', views.project, name='project'),
     path('community/', views.community, name='community'),
     path('profile/', views.profile, name='profile'),
-    path('login/', views.login, name='login'),
-    path('register/', views.register, name='register'),
+    path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('signout/', views.signout, name='signout'),
 ]

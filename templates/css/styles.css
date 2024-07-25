@@ -104,3 +104,8 @@ nav ul li a:hover {
     border-radius: 1.25rem; /* 20px = 1.25rem */
     padding: 3.125rem; /* 50px = 3.125rem */
 }
+
+.alert {
+    color:var(--md-sys-color-on-error);
+    font-size: 0.875rem; /* 14px = 0.875rem */
+}

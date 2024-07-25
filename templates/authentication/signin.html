@@ -1,0 +1,47 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <body>
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <iframe class="responsive-iframe" src="https://my.spline.design/untitled-75ef12d98642fc62abe9d52316f9da28/"></iframe>
+                    </div>    
+                    <div class="signin-form">
+                        <h2 class="form-title">Login</h2>
+                        <form action="/signin/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="fa-solid fa-user"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="fa-solid fa-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password" autocomplete="off" autofocus required/>
+                            </div>
+                            {%for message in messages%}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong>{{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                            <div class="login-link">
+                                <p>Don't have an account? <a href="/signup">Register here</a>.</p>
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" name="signin" id="signin" class="form-submit">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'registration.css' %}">
+    <body>
+        <section class="sign-up">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-image">
+                        <iframe class="responsive-iframe" src="https://my.spline.design/girldancecopy-3b9faf3c8131d617b23dd5d9d14ac201/"></iframe>
+                    </div>    
+                    <div class="signup-form">
+                        <h2 class="form-title">Register</h2>
+                        <form action="/signup/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username"><i class="fa-solid fa-user"></i></label>
+                            <input type="text" name="username" id="username" placeholder="Username" required maxlength="20" pattern="[A-Za-z0-9]+"/>
+                        </div>
+                        <div class="name-form-group">
+                            <div class="form-group">
+                                <input type="text" name="fname" id="fname" placeholder="First Name" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lname" id="lname" placeholder="Last Name" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Email" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required minlength="8" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,16}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="conpassword"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="conpassword" id="conpassword" placeholder="Confirm Password" autocomplete="off" required/>
+                        </div>
+                            {%for message in messages%}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong>{{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+                            <div class="login-link">
+                                <p>Have an account? <a href="/signin">Login here</a>.</p>
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" name="signup" id="signup" class="form-submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            function validateForm() {
+                const username = document.getElementById('username');
+                const fname = document.getElementById('fname');
+                const lname = document.getElementById('lname');
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const conpassword = document.getElementById('conpassword');
+
+                // Clear previous custom messages
+                username.setCustomValidity('');
+                fname.setCustomValidity('');
+                lname.setCustomValidity('');
+                email.setCustomValidity('');
+                password.setCustomValidity('');
+                conpassword.setCustomValidity('');
+
+                // Custom validation messages
+                if (username.value === '') {
+                    username.setCustomValidity('Username is required');
+                    username.reportValidity();
+                    return false;
+                }
+
+                if (username.value.length > 20) {
+                    username.setCustomValidity('Username must be under 20 characters');
+                    username.reportValidity();
+                    return false;
+                }
+
+                if (!/^[A-Za-z0-9]+$/.test(username.value)) {
+                    username.setCustomValidity('Username should only contain letters and numbers');
+                    username.reportValidity();
+                    return false;
+                }
+
+                if (fname.value === '') {
+                    fname.setCustomValidity('First name is required');
+                    fname.reportValidity();
+                    return false;
+                }
+
+                if (lname.value === '') {
+                    lname.setCustomValidity('Last name is required');
+                    lname.reportValidity();
+                    return false;
+                }
+
+                if (email.value === '') {
+                    email.setCustomValidity('Email is required');
+                    email.reportValidity();
+                    return false;
+                }
+
+                if (password.value === '') {
+                    password.setCustomValidity('Password is required');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (password.value.length < 8) {
+                    password.setCustomValidity('Password must be at least 8 characters');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (password.value.length > 16) {
+                    password.setCustomValidity('Password must be under 16 characters');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (!/[0-9]/.test(password.value)) {
+                    password.setCustomValidity('Password must contain at least one digit');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (!/[A-Z]/.test(password.value)) {
+                    password.setCustomValidity('Password must contain at least one uppercase letter');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (!/[a-z]/.test(password.value)) {
+                    password.setCustomValidity('Password must contain at least one lowercase letter');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (!/[@$!%*?&#]/.test(password.value)) {
+                    password.setCustomValidity('Password must contain at least one special character');
+                    password.reportValidity();
+                    return false;
+                }
+
+                if (password.value !== conpassword.value) {
+                    conpassword.setCustomValidity('Passwords do not match');
+                    conpassword.reportValidity();
+                    return false;
+                }
+
+                return true; // Proceed with form submission
+            }
+        </script>
+    </body>
+{% endblock %}
