@@ -1,0 +1,246 @@
+/* Importing fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* Main styling */
+body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--md-sys-color-on-background);
+    background: var(--md-sys-color-background);
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* About Us Section */
+.about-us {
+    background: var(--md-sys-color-background);
+    color: var(--md-sys-color-primary);
+    padding: 5rem 0;
+}
+
+.about-us h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Merriweather', serif;
+}
+
+.about-us p {
+    font-size: 1.125rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features Section */
+.features {
+    background: var(--md-sys-color-on-primary-container);
+    color: var(--md-sys-color-on-primary);
+    padding: 5rem 4rem;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Merriweather', serif;
+}
+
+.features .feature-list {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.features .feature-item {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 2rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 2rem);
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05);
+}
+
+.features .feature-item i {
+    color:var(--md-sys-color-secondary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.features .feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.features .feature-item p {
+    font-size: 1rem;
+}
+
+/* How It Works Section */
+.how-it-works {
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    padding: 5rem 4rem;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Merriweather', serif;
+}
+
+.how-it-works .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.how-it-works .step {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 2rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 2rem);
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05);
+}
+
+.how-it-works .step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.how-it-works .step img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 1rem;
+}
+
+.how-it-works .step h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.how-it-works .step p {
+    font-size: 1rem;
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    background: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    padding: 5rem 4rem;
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Merriweather', serif;
+}
+
+.testimonials .testimonial-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.testimonials .testimonial-item {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 2rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 2rem);
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05);
+}
+
+.testimonials .testimonial-item p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Call to Action Section */
+.call-to-action {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.call-to-action h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
+}
+
+.call-to-action p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.call-to-action .cta-button {
+    background: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    padding: 1rem 2rem;
+    border-radius: 0.3125rem;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.call-to-action .cta-button:hover {
+    background: var(--md-sys-color-primary-fixed-dim);
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    .features .feature-item,
+    .how-it-works .step,
+    .testimonials .testimonial-item {
+        flex: 1 1 100%;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}

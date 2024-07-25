@@ -4,27 +4,109 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <body>
-        {% for message in messages%}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    
+    <section class="message">
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Message:</strong> {{ message }}
         </div>
         {% endfor %}
+    </section>
 
-        <h3>Welcome to Harmonizer</h3>
+    <section class="hero">
+        <div class="hero-image">
+            <iframe class="responsive-iframe" src="https://my.spline.design/miniroommusiccopy-ee99566af4c63e4205ce22a88fde72d3/"></iframe>
+        </div>
+    </section>
 
-        {% if user.is_authenticated %}
+    <section class="about-us">
+        <div class="container">
+            <h2>What is AI Harmonizer?</h2>
+            <p>AI Harmonizer is a state-of-the-art AI-powered system designed to predict chords for any piece of music. Whether you're a professional musician, a music teacher, or an enthusiast, AI Harmonizer helps you create, learn, and experiment with music effortlessly. By leveraging advanced machine learning algorithms, our system provides accurate chord predictions that can significantly enhance your musical projects.</p>
+        </div>
+    </section>
 
-        <h3>Hello, {{ fname }}</h3>
-        <button type="submit"><a href="/signout">SignOut</a></button>
+    <section class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fa-solid fa-music"></i>
+                    <h3>Chord Prediction</h3>
+                    <p>Analyze any music piece and get precise chord predictions.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-memory"></i>
+                    <h3>Genre Support</h3>
+                    <p>Works with various music genres to suit your needs.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <h3>Real-time Analysis</h3>
+                    <p>Get immediate results with real-time music analysis.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h3>User-Friendly Interface</h3>
+                    <p>Simple and intuitive interface for a smooth experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        {%else%}
-        <button type="submit"><a href="/signup">SignUp</a></button>
-        <button type="submit"><a href="/signin">SignIn</a></button>
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1</h3>
+                    <img src="{% static 'chord.png' %}"  alt="Select Chord" class="gif"/>
+                    <h4>Select Base Chords</h4>
+                    <p>Choose your initial set of chords to start with.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2</h3>
+                    <img src="{% static 'analysis.gif' %}"  alt="Analysis" class="gif"/>
+                    <h4>Analyze and Predict</h4>
+                    <p>AI Harmonizer analyzes the base chords and suggests suitable chord progressions.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3</h3>
+                    <img src="{% static 'download.gif' %}"  alt="Download" class="gif"/>
+                    <h4>View and Download</h4>
+                    <p>Review the suggested chords and download them for your music project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-list">
+                <div class="testimonial-item">
+                    <p>"AI Harmonizer has completely transformed the way I compose music. The chord suggestions are incredibly accurate, and it saves me so much time in the creative process. I can't imagine going back to manual chord analysis!"</p>
+                    <p>- Jane Doe, Professional Musician</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"As a music teacher, AI Harmonizer has become an invaluable tool for my students. It helps them understand chord progressions better and encourages them to experiment with different musical ideas. Highly recommended!"</p>
+                    <p>- John Smith, Music Educator</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"I was skeptical at first, but AI Harmonizer has exceeded my expectations. The intuitive interface and precise chord predictions make it an essential tool for any music enthusiast. It's like having a professional music assistant right at my fingertips!"</p>
+                    <p>- Jeremin Kai, Hobbyist Composer</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        {%endif%}
-    </body>
+    <section class="call-to-action">
+        <div class="container">
+            <h2>Ready to enhance your music with AI Harmonizer?</h2>
+            <p>Sign up now for a free trial and start creating beautiful music effortlessly.</p>
+            <a href="{% url 'signup' %}" class="cta-button">Sign Up Now</a>
+        </div>
+    </section>
+</body>
 {% endblock %}

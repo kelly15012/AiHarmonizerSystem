@@ -18,6 +18,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* ==================================================================
+                            Header
+===================================================================*/
+
 header {
     color: var(--md-sys-color-background);
     text-align: center;
@@ -33,6 +37,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .nav-left {
     display: flex;
@@ -73,6 +78,13 @@ nav ul li a:hover {
     color: var(--md-sys-color-on-secondary);
 }
 
+.nav-right p {
+    font-family: 'Future PT', sans-serif;
+    color: var(--md-sys-color-primary);
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
 .nav-login-button {
     padding: 0.5rem 2rem;
     border: none;
@@ -96,16 +108,97 @@ nav ul li a:hover {
     background: var(--md-sys-color-background);
 }
 
-.container {
-    width: 56.25rem; /* 900px = 56.25rem */
-    background: var(--md-sys-color-on-primary-container);
-    margin: 0 auto;
-    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05); /* 15px, 16.83px, 0.17px */
-    border-radius: 1.25rem; /* 20px = 1.25rem */
-    padding: 3.125rem; /* 50px = 3.125rem */
+/* ==================================================================
+                            Footer
+===================================================================*/
+
+footer {
+    background-color: var(--md-sys-color-on-tertiary-fixed-variant);
+    width:100%;
 }
 
-.alert {
-    color:var(--md-sys-color-on-error);
-    font-size: 0.875rem; /* 14px = 0.875rem */
+.footer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 10rem; /* 32px 160px */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    margin: 1.5rem;
+}
+
+.footer-col h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Futura PT', sans-serif;
+    font-style: oblique;
+    color: var(--md-sys-color-on-primary);
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.5rem;
+    font-family: 'Futura PT', sans-serif;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: var(--md-sys-color-on-primary);
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--md-sys-color-error-container);
+}
+
+
+.nav-low-logo {
+    height: 15rem; /* Adjust the height as needed */
+    width: auto;
+}
+
+.footer-down {
+    padding: 3.123rem 0;
+    text-align: center;
+    background-color: var(--md-sys-color-tertiary-fixed);
+    font-size: 1.25rem;
+    color: var(--md-sys-color-on-tertiary-fixed);
+    font-weight: 300;
+}
+
+.footer-down p {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.icons-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+i.fab {
+    font-size: 1.25rem;
+    margin: 0 1rem;
+    color: var(--md-sys-color-on-tertiary-fixed);
 }
