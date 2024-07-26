@@ -232,6 +232,66 @@ body {
     background: var(--md-sys-color-primary-fixed-dim);
 }
 
+/* Profile */
+section {
+    padding: 0 4rem 4rem 4rem; /* 0 64px 64px 64px */
+}
+
+.pwd-container {
+    width: 56.25rem; /* 900px = 56.25rem */
+    background: var(--md-sys-color-on-primary-container);
+    color: var(--md-sys-color-surface);
+    margin: 0 auto;
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05); /* 15px, 16.83px, 0.17px */
+    border-radius: 1.25rem; /* 20px = 1.25rem */
+    padding: 3.125rem; /* 50px = 3.125rem */
+}
+
+.pwd-container h2 {
+    margin-bottom: 2.0625rem; /* 33px = 2.0625rem */
+    font-weight: 700;
+    color: var(--md-sys-color-surface);
+    font-size: 2.25rem; /* 36px = 2.25rem */
+    font-family: 'Futura PT', sans-serif;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    color: var(--md-sys-color-surface);
+}
+
+/* Add border-radius to form inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    border-radius: 0.3125rem; /* 5px */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+
+form .btn {
+    background-color: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .btn:hover {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-secondary);
+}
+
 /* Responsive Styling */
 @media screen and (max-width: 768px) {
     .features .feature-item,

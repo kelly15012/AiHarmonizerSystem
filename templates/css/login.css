@@ -132,10 +132,13 @@ input::placeholder {
     margin-top: 1.5625rem; /* 25px = 1.5625rem */
     cursor: pointer;
     transition: background 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
 .form-submit:hover {
     background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-secondary);
 }
 
 label {
@@ -182,6 +185,16 @@ label {
         left: 0;
         background: var(--md-sys-color-secondary-container);
     }
+
+/* Profile */
+.profile .form-title {
+    margin-bottom: 2.0625rem; /* 33px = 2.0625rem */
+    font-weight: 700;
+    color: var(--md-sys-color-surface);
+    font-size: 2.25rem; /* 36px = 2.25rem */
+    font-family: 'Futura PT', sans-serif;
+    text-align: center;
+}
 
 /* Responsive styling */
 @media screen and (max-width: 768px) {
