@@ -1,0 +1,75 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Community{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'community.css' %}">
+    <section>
+        <h2>Community Posts</h2>
+        <form action="{% url 'create_post' %}" method="post" enctype="multipart/form-data" class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Create Post</button>
+        </form>
+        {% for post in posts %}
+            <div class="post">
+                <div class="post-header">
+                    {% if post.user.profile.profile_picture %}
+                        <img src="{{ post.user.profile.profile_picture.url }}" alt="Profile Picture" class="profile">
+                    {% else %}
+                        <img src="{% static 'default_profile.png' %}" alt="Default Profile Picture" class="profile">
+                    {% endif %}
+                    <h4>{{ post.user.username }}</h4>
+                </div>
+                <h5>{{ post.content }}</h5>
+                {% if post.media_url %}
+                    <img src="{{ post.media_url.url }}" alt="Image" class="post-img">
+                {% endif %}
+                <h6>{{ post.timestamp }}</h6>
+                
+                <!-- Likes -->
+                <form action="{% url 'like_post' post.id %}" method="post" class="like">
+                    {% csrf_token %}
+                    <button type="submit">
+                        {% if post.user_has_liked %}
+                            <i class="fa-solid fa-heart liked"></i>
+                        {% else %}
+                            <i class="fa-regular fa-heart"></i>
+                        {% endif %}
+                        ({{ post.likes.count }})
+                    </button>
+                </form>
+
+                <!-- Comments -->
+                <div class="comments">
+                    <h3>Comments <i class="fa-solid fa-comment"></i></h3>
+                    {% for comment in post.comments.all %}
+                        <div class="comment">
+                            <p><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
+                            <p><small>{{ comment.timestamp }}</small></p>
+                            
+                            <!-- Comment Likes -->
+                            <form action="{% url 'like_comment' comment.id %}" method="post" class='like'>
+                                {% csrf_token %}
+                                <button type="submit">
+                                    {% if comment.user_has_liked %}
+                                        <i class="fa-solid fa-heart liked"></i>
+                                    {% else %}
+                                        <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                    ({{ comment.likes.count }})
+                                </button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                    <form action="{% url 'create_comment' post.id %}" method="post">
+                        {% csrf_token %}
+                        <textarea name="content" rows="2" placeholder="Add a comment..."></textarea>
+                        <button type="submit"><i class="fa-regular fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

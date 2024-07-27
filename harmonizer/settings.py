@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates', 'css'),
-    os.path.join(BASE_DIR, 'templates', 'js'),
     os.path.join(BASE_DIR, 'templates', 'assets', 'images'),
 ]
 
@@ -138,4 +138,9 @@ MESSAGE_TAGS = {
         messages.ERROR: 'alert-danger',
  }
 
+#Login URL
 LOGIN_URL = 'signin'
+
+#Media Settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

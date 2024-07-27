@@ -10,8 +10,11 @@
         <div class="container">
             <div class="profile-form">
                 <h2 class="form-title">Your Profile</h2>
-                <form action="/profile/" method="post">
+                <form action="/profile/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <div class="form-group" style="text-align:center">
+                        <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+                    </div>
                     <div class="form-group">
                         <label for="username"><i class="fa-solid fa-user"></i></label>
                         <input type="text" name="username" id="username" value="{{ user.username }}" readonly/>
@@ -28,12 +31,31 @@
                         <label for="lname"><i class="fa-solid fa-user"></i></label>
                         <input type="text" name="lname" id="lname" value="{{ user.last_name }}"/>
                     </div>
+                    <div class="form-group">
+                        <label for="profile_picture"><i class="fa-solid fa-camera"></i></label>
+                        <input type="file" name="profile_picture" id="profile_picture" accept="image/*" onchange="validateFileType()"/>
+                    </div>
                     <div class="form-group form-button">
-                        <a href="{% url 'change_password' %}" class="form-submit">Change Password</a>
+                        <button type="submit" name="update_profile" id="update_profile" class="form-submit">Update Profile</button>
                     </div>
                 </form>
+                <div class="form-group form-button">
+                    <a href="{% url 'change_password' %}" class="form-submit">Change Password</a>
+                </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function validateFileType() {
+            var fileName = document.getElementById("profile_picture").value;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png" && extFile !== "webp") {
+                alert("Only jpg/jpeg, png, and webp files are allowed!");
+                document.getElementById("profile_picture").value = "";
+            }   
+        }
+    </script>
 </body>
 {% endblock %}

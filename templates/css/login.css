@@ -261,3 +261,11 @@ button:hover {
     background-color: var(--md-sys-color-on-secondary);
     color: var(--md-sys-color-secondary);
 }
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+}

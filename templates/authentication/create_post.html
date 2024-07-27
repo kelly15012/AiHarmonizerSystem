@@ -1,0 +1,18 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'community.css' %}">
+    <section class="post-section">
+        <div class="container">
+            <h2>Create Post</h2>
+            <form method="post" enctype="multipart/form-data" style="color: var(--md-sys-color-on-primary)">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button">Post</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
