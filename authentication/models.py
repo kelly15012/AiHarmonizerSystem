@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from PIL import Image
 
 class Post(models.Model):
@@ -32,6 +32,7 @@ class Like(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    subscription_plan = models.CharField(max_length=50, default='Free')
     profile_picture = models.ImageField(default='default.jpeg', upload_to='profile_pics')
 
     def save(self, *args, **kwargs):
@@ -46,3 +47,30 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.profile_picture.path)
+
+    def update_subscription(self, new_plan):
+        # Remove user from all groups
+        self.user.groups.clear()
+        # Add user to the new plan group
+        group, created = Group.objects.get_or_create(name=new_plan)
+        self.user.groups.add(group)
+        # Update the profile subscription plan
+        self.subscription_plan = new_plan
+        self.save()
+    
+class Chord(models.Model):
+    name = models.CharField(max_length=100)
+    frequency = models.FloatField()
+    duration = models.FloatField()
+    # Add more fields as necessary
+
+    def __str__(self):
+        return self.name
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name

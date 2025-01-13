@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Post, Comment, Like, Profile
+from .models import Post, Comment, Like, Profile, Feedback
 from django.core.exceptions import ValidationError
 
 class PostForm(forms.ModelForm):
@@ -55,3 +55,8 @@ class ProfileUpdateForm(forms.ModelForm):
             if not profile_picture.name.endswith(('.jpg', '.jpeg', '.png', '.webp')):
                 raise ValidationError("Only .jpg, .jpeg, .png, and .webp files are allowed.")
         return profile_picture
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['name', 'email', 'message']

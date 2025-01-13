@@ -1,0 +1,6 @@
+pandas
+tensorflow
+djangorestframework
+tensorflow pillow
+pandas
+scikit-learn

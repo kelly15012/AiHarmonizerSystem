@@ -1,13 +1,14 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import Post, Comment, Like
-from .forms import PostForm, CommentForm, UserUpdateForm, ProfileUpdateForm
+from .utils import user_is_basic_or_pro
+from .forms import PostForm, CommentForm, UserUpdateForm, ProfileUpdateForm, ContactForm
 
 # Create your views here.
 def home(request):
@@ -99,12 +100,6 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'authentication/change_password.html', {'form': form})
 
-def subscription(request):
-    return render(request, 'subscription.html')
-
-def project(request):
-    return render(request, 'project.html')
-
 #Community
 @login_required
 def community(request):
@@ -137,14 +132,18 @@ def create_comment(request, post_id):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.user = request.user
-            comment.save()
-            return redirect('community')
-    else:
-        form = CommentForm()
-    return render(request, 'authentication/create_comment.html', {'form': form})
+            comment_content = form.cleaned_data.get('content')
+            if comment_content.strip():  # Check if the comment is not empty or just whitespace
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.user = request.user
+                comment.save()
+                messages.success(request, 'Comment added successfully!', extra_tags='success')
+            else:
+                messages.warning(request, 'Comment cannot be empty.', extra_tags='warning')
+        else:
+            messages.error(request, 'There was an error with your comment.', extra_tags='warning')
+    return redirect('community')
 
 @login_required
 def create_post(request):
@@ -162,3 +161,95 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'authentication/create_post.html', {'form': form})
+
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, user=request.user)
+    post.delete()
+    messages.success(request, 'Post has been deleted successfully', extra_tags='success')
+    return redirect('community')
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+    comment.delete()
+    messages.success(request, 'Comment has been deleted successfully', extra_tags='success')
+    return redirect('community')
+
+@login_required
+@user_passes_test(user_is_basic_or_pro, login_url='/login/')
+def project(request):
+    return render(request, 'authentication/chord_predict.html')
+
+@login_required
+def subscription(request):
+    plans = [
+        {
+            'name': 'Free',
+            'benefits': ['Basic Chord Progression', '4 Chords', 'Basic Features', 'Play, Stop, Note Duration'],
+            'amount': '$0',
+            'period': 'per month'
+        },
+        {
+            'name': 'Basic',
+            'benefits': ['AI-Powered Chord Progression', '8 Chords', 'Intermediate Features', 'Play, Stop, Note Duration, Instrument'],
+            'amount': '$10',
+            'period': 'per month'
+        },
+        {
+            'name': 'Pro',
+            'benefits': ['AI-Powered Chord Progression', '8 Chords', 'Advanced Features', 'Play, Stop, Note Duration, Instrument, Genre'],
+            'amount': '$18',
+            'period': 'per month'
+        },
+    ]
+    
+    if request.method == 'POST':
+        selected_plan = request.POST.get('tier')
+        user = request.user
+
+        # Ensure the selected plan is valid
+        valid_plans = [plan['name'] for plan in plans]
+        if selected_plan not in valid_plans:
+            messages.error(request, 'Invalid plan selected', extra_tags='error')
+        else:
+            # Clear existing groups
+            user.groups.clear()
+            # Add user to the selected plan group
+            group, created = Group.objects.get_or_create(name=selected_plan)
+            user.groups.add(group)
+            messages.success(request, 'Subscription updated successfully!', extra_tags='success')
+        
+        return redirect('subscription')
+    
+    return render(request, 'authentication/subscription.html', {'plans': plans})
+
+def chord(request):
+    user_groups = request.user.groups.values_list('name', flat=True)
+
+    if 'Pro' in user_groups:
+        return render(request, 'authentication/chord_pro.html')
+    elif 'Basic' in user_groups:
+        return render(request, 'authentication/chord_basic.html')
+    else:
+        return render(request, 'authentication/chord_free.html')
+    
+def our_story(request):
+    return render(request, 'authentication/ourStory.html')
+
+def contact_us(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Feedback sent successfully!', extra_tags='success')
+            return redirect('contact_us')
+        else:
+            messages.error(request, 'Failed to send feedback. Please check the form and try again.', extra_tags='warning')
+    else:
+        form = ContactForm()
+
+    return render(request, 'authentication/contact_us.html', {'form': form})
+
+def faq(request):
+    return render(request, 'authentication/faq.html')
