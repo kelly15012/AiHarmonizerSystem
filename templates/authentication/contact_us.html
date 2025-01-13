@@ -1,0 +1,23 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Our Story{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: var(--md-sys-color-background);
+    }
+</style>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<body class="light">
+    <section class="contact-us">
+        <h2>We'd love to hear from you!</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Feedback</button>
+        </form>
+    </section>
+</body>
+{% endblock %}

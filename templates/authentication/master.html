@@ -30,8 +30,9 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'subscription' %}">Subscription</a></li>
-                    <li><a href="{% url 'project' %}">Project</a></li>
+                    <li><a href="{% url 'project' %}">Chord Prediction</a></li>
                     <li><a href="{% url 'community' %}">Community</a></li>
+                    <li><a href="{% url 'chord' %}">Chord</a></li>
                 </ul>
             </div>
             <ul class="nav-right">
@@ -65,9 +66,9 @@
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="{% url 'our_story' %}">Our Story</a></li>
+                    <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                    <li><a href="{% url 'faq' %}">FAQ</a></li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,44 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: var(--md-sys-color-background);
+    }
+</style>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<body class="light">
+    <section class="faq">
+        <div class="faq-container" style="max-width=50rem">
+            <h1>Frequently Asked Questions</h1>
+            <div class="faq-item">
+                <h2>What is AI Harmonizer?</h2>
+                <p>AI Harmonizer is a tool that helps musicians generate chord progressions based on different genres, keys, and instruments.</p>
+            </div>
+            <div class="faq-item">
+                <h2>How does AI Harmonizer work?</h2>
+                <p>AI Harmonizer uses machine learning algorithms to analyze musical patterns and generate chord sequences that fit the selected parameters.</p>
+            </div>
+            <div class="faq-item">
+                <h2>Can I customize the generated chords?</h2>
+                <p>Yes, you can select the base key, genre, and specific chords to customize the generated chord progression.</p>
+            </div>
+            <div class="faq-item">
+                <h2>What instruments are supported?</h2>
+                <p>AI Harmonizer currently supports piano, guitar, and cello. More instruments will be added in future updates.</p>
+            </div>
+            <div class="faq-item">
+                <h2>Is AI Harmonizer free to use?</h2>
+                <p>Yes, AI Harmonizer offers a free version with basic features. Premium features are available through a subscription plan.</p>
+            </div>
+            <div class="faq-item">
+                <h2>How can I contact support?</h2>
+                <p>If you need help or have any questions, please visit our <a href="{% url 'contact_us' %}">Contact Us</a> page.</p>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

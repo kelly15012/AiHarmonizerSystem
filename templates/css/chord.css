@@ -1,0 +1,89 @@
+/* chord.css */
+
+body {
+    background: var(--md-sys-color-background);
+}
+
+section {
+    width: 56.25rem; /* 900px = 56.25rem */
+    background: var(--md-sys-color-on-primary-container);
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05); /* 15px, 16.83px, 0.17px */
+    border-radius: 1.25rem; /* 20px = 1.25rem */
+    padding: 3.125rem; /* 50px = 3.125rem */
+    margin: 4rem auto;
+}
+
+.dropdown, .chord-dropdown, .genre-dropdown, .base-key-dropdown, .duration-dropdown, .instrument-dropdown {
+    margin: 10px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: 4px;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 0.5rem 2rem;
+    border: none;
+    background-color: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    border-radius: 0.3125rem; /* 5px = 0.3125rem */
+    display: inline-block;
+    font-weight:500;
+    /* width: 100%; */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 1rem;
+}
+
+button:hover {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.button.disabled {
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+#chord-picker {
+    text-align: center;
+    color: var(--md-sys-color-on-background);
+    width: 60rem; /* 900px = 56.25rem */
+    background: var(--md-sys-color-on-primary-container);
+    margin: 4rem auto;
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05); /* 15px, 16.83px, 0.17px */
+    border-radius: 1.25rem; /* 20px = 1.25rem */
+    padding: 3.125rem; /* 50px = 3.125rem */
+}
+
+h1
+{
+    font-size: 2.25rem;
+    color: var(--md-sys-color-on-primary);
+    font-family: 'Futura Pt', sans-serif;
+    margin-bottom: 2.0625rem; /* 33px = 2.0625rem */
+    font-weight: 700;
+    text-align: center;
+}
+
+label {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: var(--md-sys-color-on-primary);
+    font-weight:500;
+}
+
+.result {
+    font-size: 1rem;
+    color: var(--md-sys-color-on-primary);
+    font-weight:500;
+    font-style: italic;
+}

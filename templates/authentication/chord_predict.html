@@ -1,0 +1,122 @@
+<!-- templates/authentication/project.html -->
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Chord Prediction{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'chord.css' %}">
+    <section>
+        <h1>Chord Prediction</h1>
+        <form id="chord-form">
+            <label for="key">Key:</label>
+            <select id="key" name="key" class="dropdown" required>
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+                <option value="D">D</option>
+                <option value="D#">D#</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="G">G</option>
+                <option value="G#">G#</option>
+                <option value="A">A</option>
+                <option value="A#">A#</option>
+                <option value="B">B</option>
+            </select>
+            
+            <label for="chord">Chord:</label>
+            <select id="chord" name="chord" class="dropdown"required>
+                <option value="maj">Major</option>
+                <option value="min">Minor</option>
+                <option value="dim">Diminished</option>
+                <option value="aug">Augmented</option>
+                <option value="7">7</option>
+                <option value="maj7">Maj7</option>
+                <option value="min7">Min7</option>
+                <option value="dim7">Dim7</option>
+                <option value="sus2">Sus2</option>
+                <option value="sus4">Sus4</option>
+                <option value="5">5</option>
+            </select>
+
+            <label for="interval">Interval:</label>
+            <select id="interval" name="interval" class="dropdown"required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            
+            <label for="chord-type">Chord Type:</label>
+            <select id="chord-type" name="chord1_type" class="dropdown" disabled required>
+                <option value="major">Major</option>
+                <option value="minor">Minor</option>
+                <option value="diminished">Diminished</option>
+                <option value="augmented">Augmented</option>
+                <option value="other">Other</option>
+            </select>
+
+            <button class="button" type="submit">Predict Next Chord</button>
+        </form>
+        <div id="prediction-result" class="result"></div>
+    </section>
+    <script>
+        document.getElementById('chord').addEventListener('change', function() {
+            const chordTypeMapping = {
+                'maj': 'major',
+                'min': 'minor',
+                'dim': 'diminished',
+                'aug': 'augmented',
+                '7': 'other',
+                'maj7': 'other',
+                'min7': 'other',
+                'dim7': 'other',
+                'sus2': 'other',
+                'sus4': 'other',
+                '5': 'other'
+            };
+
+            const chord = document.getElementById('chord').value;
+            const chordType = chordTypeMapping[chord] || 'other';
+            document.getElementById('chord-type').value = chordType;
+        });
+
+        document.getElementById('chord-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const key = document.getElementById('key').value;
+            const chord = document.getElementById('chord').value;
+            const interval = document.getElementById('interval').value;
+            const chordType = document.getElementById('chord-type').value;
+            const baseChord = key + chord;
+            
+            fetch("{% url 'predict_chord' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    base_chord: baseChord,
+                    interval: interval,
+                    chord1_type: chordType
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.predicted_chord) {
+                    document.getElementById('prediction-result').innerText = 'Predicted Chord: ' + data.predicted_chord;
+                } else if (data.error) {
+                    document.getElementById('prediction-result').innerText = 'Error: ' + data.error;
+                }
+            })
+            .catch(error => {
+                document.getElementById('prediction-result').innerText = 'Error: ' + error;
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,90 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--md-sys-color-secondary-container);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: var(--md-sys-color-on-secondary-container);
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: var(--md-sys-color-secondary);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.project-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-option {
+    background-color: var(--md-sys-color-primary-container);
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.project-option i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.project-option:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}

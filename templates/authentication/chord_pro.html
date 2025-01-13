@@ -1,0 +1,787 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Chord Prediction{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'chord.css' %}">
+        <div id="chord-picker">
+            <h1>Select your genre, base key, chords, duration, and instrument (Pro)</h1>
+            <div>
+                <label for="base-key">Base Key:</label>
+                <select id="base-key" class="base-key-dropdown">
+                    <option value="C">C</option>
+                    <option value="C#">C#</option>
+                    <option value="D">D</option>
+                    <option value="Eb">Eb</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="F#">F#</option>
+                    <option value="G">G</option>
+                    <option value="Ab">Ab</option>
+                    <option value="A">A</option>
+                    <option value="Bb">Bb</option>
+                    <option value="B">B</option>
+                </select>
+            </div>
+            <div>
+                <label for="genre">Genre:</label>
+                <select id="genre" class="genre-dropdown">
+                    <option value="pop1">Pop 1 (I&ndash;V&ndash;vi&ndash;IV)</option>
+                    <option value="pop2">Pop 2 (vi&ndash;IV&ndash;I&ndash;V)</option>
+                    <option value="rock1">Rock 1 (I&ndash;IV&ndash;V&ndash;I)</option>
+                    <option value="rock2">Rock 2 (i&ndash;♭VII&ndash;iv&ndash;v)</option>
+                    <option value="blues">Blues (I&ndash;IV&ndash;I&ndash;V)</option>
+                    <option value="classical1">Classical 1 (I&ndash;IV&ndash;V&ndash;I)</option>
+                    <option value="classical2">Classical 2 (I&ndash;vi&ndash;IV&ndash;V)</option>
+                    <option value="country1">Country 1 (I&ndash;IV&ndash;V&ndash;I)</option>
+                    <option value="country2">Country 2 (I&ndash;V&ndash;vi&ndash;IV)</option>
+                </select>                               
+            </div>
+            <div>
+                <select id="chord1" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord2" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord3" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord4" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord5" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord6" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord7" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+                <select id="chord8" class="chord-dropdown">
+                    <option value="1maj">1maj</option>
+                    <option value="1min">1min</option>
+                    <option value="1dim">1dim</option>
+                    <option value="1aug">1aug</option>
+                    <option value="2maj">2maj</option>
+                    <option value="2min">2min</option>
+                    <option value="2dim">2dim</option>
+                    <option value="2aug">2aug</option>
+                    <option value="3maj">3maj</option>
+                    <option value="3min">3min</option>
+                    <option value="3dim">3dim</option>
+                    <option value="3aug">3aug</option>
+                    <option value="4maj">4maj</option>
+                    <option value="4min">4min</option>
+                    <option value="4dim">4dim</option>
+                    <option value="4aug">4aug</option>
+                    <option value="5maj">5maj</option>
+                    <option value="5min">5min</option>
+                    <option value="5dim">5dim</option>
+                    <option value="5aug">5aug</option>
+                    <option value="6maj">6maj</option>
+                    <option value="6min">6min</option>
+                    <option value="6dim">6dim</option>
+                    <option value="6aug">6aug</option>
+                    <option value="b7maj">b7maj</option>
+                    <option value="b7min">b7min</option>
+                    <option value="b7dim">b7dim</option>
+                    <option value="b7aug">b7aug</option>
+                    <option value="7maj">7maj</option>
+                    <option value="7min">7min</option>
+                    <option value="7dim">7dim</option>
+                    <option value="7aug">7aug</option>
+                    <option value="maj7">maj7</option>
+                    <option value="min7">min7</option>
+                    <option value="dom7">dom7</option>
+                    <option value="dim7">dim7</option>
+                    <option value="m7b5">m7b5</option>
+                    <option value="maj9">maj9</option>
+                    <option value="min9">min9</option>
+                    <option value="dom9">dom9</option>
+                    <option value="dim9">dim9</option>
+                    <option value="maj11">maj11</option>
+                    <option value="min11">min11</option>
+                    <option value="dom11">dom11</option>
+                    <option value="maj13">maj13</option>
+                    <option value="min13">min13</option>
+                    <option value="dom13">dom13</option>
+                    <option value="sus2">sus2</option>
+                    <option value="sus4">sus4</option>
+                    <option value="7sus2">7sus2</option>
+                    <option value="7sus4">7sus4</option>
+                    <option value="6">6</option>
+                    <option value="m6">m6</option>
+                    <option value="9sus4">9sus4</option>
+                </select>
+            </div>
+            <div>
+                <label for="note-duration">Note Duration:</label>
+                <select id="note-duration" class="duration-dropdown">
+                    <option value="4n">Quarter Note</option>
+                    <option value="2n">Half Note</option>
+                    <option value="1n">Whole Note</option>
+                    <option value="8n">Eighth Note</option>
+                    <!-- Add more duration options as needed -->
+                </select>
+            </div>
+            <div>
+                <label for="instrument">Instrument:</label>
+                <select id="instrument" class="instrument-dropdown">
+                    <option value="piano">Piano</option>
+                    <option value="guitar">Guitar</option>
+                    <option value="cello">Cello</option>
+                </select>
+            </div>
+            <div class="controls">
+                <button id="play" class="button enabled">Play</button>
+                <button id="stop" class="button enabled">Stop</button>
+                <button id="clear" class="button enabled">Clear</button>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.39/Tone.min.js"></script>
+        
+        <script>
+            const chordShapes = {
+                "1maj": [0, 4, 7],
+                "1min": [0, 3, 7],
+                "1dim": [0, 3, 6],
+                "1aug": [0, 4, 8],
+                "2maj": [2, 6, 9],
+                "2min": [2, 5, 9],
+                "2dim": [2, 5, 8],
+                "2aug": [2, 6, 10],
+                "3maj": [4, 8, 11],
+                "3min": [4, 7, 11],
+                "3dim": [4, 7, 10],
+                "3aug": [4, 8, 12],
+                "4maj": [5, 9, 12],
+                "4min": [5, 8, 12],
+                "4dim": [5, 8, 11],
+                "4aug": [5, 9, 13],
+                "5maj": [7, 11, 14],
+                "5min": [7, 10, 14],
+                "5dim": [7, 10, 13],
+                "5aug": [7, 11, 15],
+                "6maj": [9, 13, 16],
+                "6min": [9, 12, 16],
+                "6dim": [9, 12, 15],
+                "6aug": [9, 13, 17],
+                "b7maj": [10, 14, 17],
+                "b7min": [10, 13, 17],
+                "b7dim": [10, 13, 16],
+                "b7aug": [10, 14, 18],
+                "7maj": [11, 15, 18],
+                "7min": [11, 14, 18],
+                "7dim": [11, 14, 17],
+                "7aug": [11, 15, 19],
+                "maj7": [0, 4, 7, 11],
+                "min7": [0, 3, 7, 10],
+                "dom7": [0, 4, 7, 10],
+                "dim7": [0, 3, 6, 9],
+                "m7b5": [0, 3, 6, 10],
+                "maj9": [0, 4, 7, 11, 14],
+                "min9": [0, 3, 7, 10, 14],
+                "dom9": [0, 4, 7, 10, 14],
+                "dim9": [0, 3, 6, 9, 12],
+                "maj11": [0, 4, 7, 11, 14, 17],
+                "min11": [0, 3, 7, 10, 14, 17],
+                "dom11": [0, 4, 7, 10, 14, 17],
+                "maj13": [0, 4, 7, 11, 14, 17, 21],
+                "min13": [0, 3, 7, 10, 14, 17, 21],
+                "dom13": [0, 4, 7, 10, 14, 17, 21],
+                "sus2": [0, 2, 7],
+                "sus4": [0, 5, 7],
+                "7sus2": [0, 2, 7, 10],
+                "7sus4": [0, 5, 7, 10],
+                "6": [0, 4, 7, 9],
+                "m6": [0, 3, 7, 9],
+                "9sus4": [0, 5, 7, 10, 14],
+            };
+
+            const notes = {
+                "C": 0,
+                "C#": 1,
+                "D": 2,
+                "Eb": 3,
+                "E": 4,
+                "F": 5,
+                "F#": 6,
+                "G": 7,
+                "Ab": 8,
+                "A": 9,
+                "Bb": 10,
+                "B": 11
+            };
+
+            const genres = {
+                "pop1": ["1maj", "5maj", "6min", "4maj", "3min", "4maj", "5maj", "1maj"],
+                "pop2": ["6min", "4maj", "1maj", "5maj", "2min", "4maj", "1maj", "5maj"],
+                "rock1": ["1maj", "4maj", "5maj", "1maj", "4maj", "5maj", "1maj", "4maj"],
+                "rock2": ["1min", "b7maj", "4min", "5min", "6min", "3min", "4min", "1min"],
+                "blues": ["1maj", "4maj", "1maj", "1maj", "4maj", "4maj", "1maj", "1maj"], // 12-Bar Blues (simplified)
+                "classical1": ["1maj", "4maj", "5maj", "1maj", "2min", "5maj", "1maj", "4maj"],
+                "classical2": ["1maj", "6min", "4maj", "5maj", "1maj", "2min", "4maj", "5maj"],
+                "country1": ["1maj", "4maj", "1maj", "5maj", "1maj", "4maj", "1maj", "5maj"],
+                "country2": ["1maj", "5maj", "6min", "4maj", "1maj", "5maj", "2min", "4maj"]
+            };
+
+            
+
+
+            function getChordNotes(baseKey, chordType, octave = 4) {
+                const baseNote = notes[baseKey] + 12 * octave;
+                const chordShape = chordShapes[chordType];
+                return chordShape.map(interval => baseNote + interval);
+            }
+
+            function populateChordsForGenre(genre) {
+                const chords = genres[genre];
+                document.getElementById('chord1').value = chords[0];
+                document.getElementById('chord2').value = chords[1];
+                document.getElementById('chord3').value = chords[2];
+                document.getElementById('chord4').value = chords[3];
+                document.getElementById('chord5').value = chords[4];
+                document.getElementById('chord6').value = chords[5];
+                document.getElementById('chord7').value = chords[6];
+                document.getElementById('chord8').value = chords[7];
+            }
+
+            document.getElementById('genre').addEventListener('change', (event) => {
+                populateChordsForGenre(event.target.value);
+            });
+
+            function getChordNotes(baseKey, chordType, octave = 4) {
+                const baseNote = notes[baseKey] + 12 * octave;
+                const chordShape = chordShapes[chordType];
+                return chordShape.map(interval => baseNote + interval);
+            }
+
+            const piano = new Tone.Sampler({
+                urls: {
+                    A0: "A0.mp3",
+                    C1: "C1.mp3",
+                    "D#1": "Ds1.mp3",
+                    "F#1": "Fs1.mp3",
+                    A1: "A1.mp3",
+                    C2: "C2.mp3",
+                    "D#2": "Ds2.mp3",
+                    "F#2": "Fs2.mp3",
+                    A2: "A2.mp3",
+                    C3: "C3.mp3",
+                    "D#3": "Ds3.mp3",
+                    "F#3": "Fs3.mp3",
+                    A3: "A3.mp3",
+                    C4: "C4.mp3",
+                    "D#4": "Ds4.mp3",
+                    "F#4": "Fs4.mp3",
+                    A4: "A4.mp3",
+                    C5: "C5.mp3",
+                    "D#5": "Ds5.mp3",
+                    "F#5": "Fs5.mp3",
+                    A5: "A5.mp3",
+                    C6: "C6.mp3",
+                    "D#6": "Ds6.mp3",
+                    "F#6": "Fs6.mp3",
+                    A6: "A6.mp3",
+                    C7: "C7.mp3",
+                    "D#7": "Ds7.mp3",
+                    "F#7": "Fs7.mp3",
+                    A7: "A7.mp3",
+                    C8: "C8.mp3"
+                },
+                release: 1,
+                baseUrl: "https://tonejs.github.io/audio/salamander/"
+            }).toDestination();
+
+            const baseURL = "{% static 'samples/guitar-acoustic/' %}";
+
+            const guitar = new Tone.Sampler({
+                urls: {
+                    A2: baseURL + "A2.mp3",
+                    C3: baseURL + "C3.mp3",
+                    "D#3": baseURL + "Ds3.mp3",
+                    "F#3": baseURL + "Fs3.mp3",
+                    A3: baseURL + "A3.mp3",
+                    C4: baseURL + "C4.mp3",
+                    "D#4": baseURL + "Ds4.mp3",
+                    "F#4": baseURL + "Fs4.mp3",
+                    A4: baseURL + "A4.mp3",
+                    C5: baseURL + "C5.mp3",
+                    "D#5": baseURL + "Ds5.mp3",
+                    "F#5": baseURL + "Fs5.mp3",
+                    A5: baseURL + "A5.mp3"
+                },
+                release: 1,
+                baseUrl: ""
+            }).toDestination();
+
+            const baseURL1 = "{% static 'samples/cello/' %}";
+
+            const cello = new Tone.Sampler({
+                urls: {
+                    A2: baseURL1 + "A2.mp3",
+                    C3: baseURL1 + "C3.mp3",
+                    "D#3": baseURL1 + "Ds3.mp3",
+                    "F#3": baseURL1 + "Fs3.mp3",
+                    A3: baseURL1 + "A3.mp3",
+                    C4: baseURL1 + "C4.mp3",
+                    "D#4": baseURL1 + "Ds4.mp3",
+                    "F#4": baseURL1 + "Fs4.mp3",
+                    A4: baseURL1 + "A4.mp3",
+                    C5: baseURL1 + "C5.mp3",
+                    "D#5": baseURL1 + "Ds5.mp3",
+                    "F#5": baseURL1 + "Fs5.mp3",
+                    A5: baseURL1 + "A5.mp3"
+                },
+                release: 1,
+                baseUrl: ""
+            }).toDestination();
+
+            function getInstrumentSampler(instrument) {
+                switch(instrument) {
+                    case 'piano':
+                        return piano;
+                    case 'guitar':
+                        return guitar;
+                    case 'cello':
+                        return cello;
+                    default:
+                        return piano;
+                }
+            }
+
+            let currentPart;
+
+            function playChordSequence() {
+                const baseKey = document.getElementById('base-key').value;
+                const chords = [
+                    document.getElementById('chord1').value,
+                    document.getElementById('chord2').value,
+                    document.getElementById('chord3').value,
+                    document.getElementById('chord4').value,
+                    document.getElementById('chord5').value,
+                    document.getElementById('chord6').value,
+                    document.getElementById('chord7').value,
+                    document.getElementById('chord8').value
+                ];
+                const duration = document.getElementById('note-duration').value;
+                const instrument = document.getElementById('instrument').value;
+                const sampler = getInstrumentSampler(instrument);
+
+                const now = Tone.now();
+
+                if (currentPart) {
+                    currentPart.stop();
+                }
+
+                currentPart = new Tone.Part((time, chord) => {
+                    const notesToPlay = getChordNotes(baseKey, chord);
+                    const octaveAdjustedNotes = notesToPlay.map(note => Tone.Frequency(note, "midi").toNote());
+                    sampler.triggerAttackRelease(octaveAdjustedNotes, duration, time);
+                }, chords.map((chord, index) => [now + index * Tone.Time(duration).toSeconds(), chord]));
+
+                currentPart.start(0);
+                Tone.Transport.start();
+            }
+
+            function stopChordSequence() {
+                if (currentPart) {
+                    currentPart.stop();
+                    currentPart = null;
+                }
+                Tone.Transport.stop();
+            }
+
+            function clearSelections() {
+                document.getElementById('chord1').selectedIndex = 0;
+                document.getElementById('chord2').selectedIndex = 0;
+                document.getElementById('chord3').selectedIndex = 0;
+                document.getElementById('chord4').selectedIndex = 0;
+                document.getElementById('chord5').selectedIndex = 0;
+                document.getElementById('chord6').selectedIndex = 0;
+                document.getElementById('chord7').selectedIndex = 0;
+                document.getElementById('chord8').selectedIndex = 0;
+                document.getElementById('note-duration').selectedIndex = 0;
+                document.getElementById('instrument').selectedIndex = 0;
+            }
+
+            document.getElementById('play').addEventListener('click', playChordSequence);
+            document.getElementById('stop').addEventListener('click', stopChordSequence);
+            document.getElementById('clear').addEventListener('click', clearSelections);
+        </script>
+{% endblock %}

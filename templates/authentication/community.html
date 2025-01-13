@@ -15,13 +15,22 @@
         {% for post in posts %}
             <div class="post">
                 <div class="post-header">
-                    {% if post.user.profile.profile_picture %}
-                        <img src="{{ post.user.profile.profile_picture.url }}" alt="Profile Picture" class="profile">
-                    {% else %}
-                        <img src="{% static 'default_profile.png' %}" alt="Default Profile Picture" class="profile">
+                    <div class="post-user-info">
+                        {% if post.user.profile.profile_picture %}
+                            <img src="{{ post.user.profile.profile_picture.url }}" alt="Profile Picture" class="profile">
+                        {% else %}
+                            <img src="{% static 'default_profile.png' %}" alt="Default Profile Picture" class="profile">
+                        {% endif %}
+                        <h4>{{ post.user.username }}</h4>
+                    </div>
+                    {% if post.user == request.user %}
+                        <form action="{% url 'delete_post' post.id %}" method="post" class="delete-form">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                     {% endif %}
-                    <h4>{{ post.user.username }}</h4>
                 </div>
+
                 <h5>{{ post.content }}</h5>
                 {% if post.media_url %}
                     <img src="{{ post.media_url.url }}" alt="Image" class="post-img">
@@ -46,7 +55,22 @@
                     <h3>Comments <i class="fa-solid fa-comment"></i></h3>
                     {% for comment in post.comments.all %}
                         <div class="comment">
-                            <p><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
+                            <div class="comment-header">
+                                <div class="comment-user-info">
+                                    {% if comment.user.profile.profile_picture %}
+                                        <img src="{{ comment.user.profile.profile_picture.url }}" alt="Profile Picture" class="profile">
+                                    {% else %}
+                                        <img src="{% static 'default_profile.png' %}" alt="Default Profile Picture" class="profile">
+                                    {% endif %}
+                                    <p style="margin-bottom:0; margin-left:0.5rem;"><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
+                                </div>
+                                {% if comment.user == request.user %}
+                                    <form action="{% url 'delete_comment' comment.id %}" method="post" class="delete-form">
+                                        {% csrf_token %}
+                                        <button type="submit" class="delete-button"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                {% endif %}
+                            </div>
                             <p><small>{{ comment.timestamp }}</small></p>
                             
                             <!-- Comment Likes -->

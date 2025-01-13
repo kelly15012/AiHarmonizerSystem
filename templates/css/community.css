@@ -29,11 +29,22 @@ h2 {
     font-family: 'Futura PT', sans-serif;
 }
 
-.post-header {
+.post-header, .comment-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-bottom: 1.5rem;
+    justify-content: space-between;
+}
+
+.post-user-info, .comment-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.delete-form {
+    display: inline-flex;
+    align-items: center;
 }
 
 .post h4 {

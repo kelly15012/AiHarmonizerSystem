@@ -1,0 +1,25 @@
+{% extends 'authentication/master.html' %}
+{% load static %}
+
+{% block title %}Our Story{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: var(--md-sys-color-background);
+    }
+</style>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<body class="light">
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>Welcome to AI Harmonizer! We are dedicated to revolutionizing the way musicians create and interact with music. Our innovative AI technology helps musicians of all levels to compose, harmonize, and experiment with musical ideas effortlessly.</p>
+        <h3>Our Mission</h3>
+        <p>Our mission is to empower musicians and composers with cutting-edge AI tools that enhance creativity and productivity. We strive to make music creation accessible to everyone, regardless of their technical background or musical expertise.</p>
+        <h3>Our Technology</h3>
+        <p>AI Harmonizer leverages advanced machine learning algorithms to analyze musical patterns and generate harmonious compositions. Our tools are designed to assist with chord progression, melody creation, and arrangement, making the creative process smoother and more enjoyable.</p>
+        <h3>Meet the Team</h3>
+        <p>Our team consists of passionate musicians, AI experts, and software developers who share a common love for music and technology. We are committed to continuous improvement and innovation to meet the evolving needs of the music community.</p>
+    </section>
+</body>
+{% endblock %}

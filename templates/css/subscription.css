@@ -1,0 +1,98 @@
+body {
+    background: var(--md-sys-color-background);
+}
+
+.subscription-section {
+    padding: 4rem;
+    background-color: var(--md-sys-color-on-secondary-container);
+}
+
+.subscription-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.subscription-section h2, h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 2.25rem;
+}
+
+.subscription-section h2 {
+    color: var(--md-sys-color-on-primary);
+}
+
+.subscription-section h3 {
+    color: var(--md-sys-color-primary);
+}
+
+.subscription-section .subtitle {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.25rem;
+    color: var(--md-sys-color-on-background);
+}
+
+.plans {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.plan {
+    background-color: var(--md-sys-color-surface);
+    border-radius: 0.625rem; /* 10px */
+    box-shadow: 0 0.9375rem 1.051875rem 0.010625rem rgba(0, 0, 0, 0.05); /* 15px, 16.83px, 0.17px */
+    width: 30%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.plan-details {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plan-header {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-top-left-radius: 0.625rem; /* 10px */
+    border-top-right-radius: 0.625rem; /* 10px */
+}
+
+.plan-benefit {
+    padding: 1rem;
+    border-bottom: 1px solid var(--md-sys-color-outline);
+}
+
+.plan-amount {
+    padding: 1rem;
+    font-size: 1.25rem;
+    color: var(--md-sys-color-secondary);
+}
+
+.plan-action {
+    background-color: var(--md-sys-color-surface-variant);
+    padding: 1rem;
+    border-bottom-left-radius: 0.625rem; /* 10px */
+    border-bottom-right-radius: 0.625rem; /* 10px */
+}
+
+.plan-action .button {
+    padding: 0.5rem 2rem;
+    border: none;
+    background-color: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    border-radius: 0.3125rem; /* 5px */
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.plan-action .button:hover {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
