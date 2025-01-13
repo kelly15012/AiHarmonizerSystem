@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -120,9 +121,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'templates', 'css'),
+    os.path.join(BASE_DIR, 'templates', 'js'),
     os.path.join(BASE_DIR, 'templates', 'assets', 'images'),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
